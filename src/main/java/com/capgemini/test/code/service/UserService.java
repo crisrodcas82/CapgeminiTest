@@ -3,7 +3,6 @@ package com.capgemini.test.code.service;
 import com.capgemini.test.code.clients.EmailClient;
 import com.capgemini.test.code.clients.SmsClient;
 import feign.FeignException;
-import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.test.code.entity.Room;
@@ -18,7 +17,7 @@ import java.util.Map;
 
 @Service
 
-public class Userservice {
+public class UserService {
 
     private final RoomRepository roomRepository;
     private final UserRepository userRepository;
@@ -28,7 +27,7 @@ public class Userservice {
 
 
     // Constructor: dependencias
-    public Userservice(RoomRepository roomRepository, UserRepository userRepository,  DniClient dniClient, EmailClient emailClient, SmsClient smsClient) {
+    public UserService(RoomRepository roomRepository, UserRepository userRepository, DniClient dniClient, EmailClient emailClient, SmsClient smsClient) {
         this.roomRepository = roomRepository;
         this.userRepository = userRepository;
         this.dniClient = dniClient;

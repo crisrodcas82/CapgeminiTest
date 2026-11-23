@@ -1,7 +1,7 @@
 package com.capgemini.test.code.controller;
 
 import com.capgemini.test.code.entity.User;
-import com.capgemini.test.code.service.Userservice;
+import com.capgemini.test.code.service.UserService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +17,9 @@ import java.util.Map;
 
 public class UserController {
 
-    private final Userservice userService;
+    private final UserService userService;
 
-    public UserController(Userservice userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
