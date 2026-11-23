@@ -63,6 +63,7 @@ public class UserService {
         }
 
         System.out.println ("ROL:" + user.getRole());
+
         // Validar rol
         if (!"admin".equals(user.getRole()) && ! "superadmin".equals(user.getRole()) ){
             throw new IllegalArgumentException("Rol no valido");
@@ -107,11 +108,15 @@ public class UserService {
 
         if ("admin".equals(user.getRole())){
 
+            System.out.println("ENVIANDO EMAIL A: " + user.getEmail());
+
             Map<String, String> request = Map.of("email", user.getEmail(), "message", mensaje);
 
             emailClient.enviarEmail(request);
 
         } else if ("superadmin".equals(user.getRole())){
+
+            System.out.println("ENVIANDO SMS A: " + user.getPhone());
 
             Map<String, String> request = Map.of("phone", user.getPhone(), "message", mensaje);
 
