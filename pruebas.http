@@ -1,0 +1,13 @@
+### POST request to example server
+POST http://localhost:8080/rooms/1/users
+Content-Type: application/json
+
+{
+  "name": "Cristina Rodriguez",
+  "email": "cristina.rodriguez@ejemplo.com",
+  "dni": "74859632P",
+  "phone": "616777888",
+  "role": "USER"
+
+}
+###
