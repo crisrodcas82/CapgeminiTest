@@ -54,12 +54,7 @@ public class UserService {
         }
         // Validar mail
         if (user.getEmail()==null || ! user.getEmail().contains("@") || ! user.getEmail().contains(".")){
-            throw new IllegalArgumentException("email");
-        }
-
-        // Comprobar si existe mail
-        if (userRepository.existsByEmail(user.getEmail())){
-            throw new IllegalArgumentException("email");
+            throw new IllegalArgumentException("Email no valido");
         }
 
         System.out.println ("ROL:" + user.getRole());
@@ -67,6 +62,21 @@ public class UserService {
         // Validar rol
         if (!"admin".equals(user.getRole()) && ! "superadmin".equals(user.getRole()) ){
             throw new IllegalArgumentException("Rol no valido");
+        }
+
+        // Comprobar si existe mail
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new IllegalArgumentException("El email ya existe");
+        }
+
+        // Comprobar si existe dni
+        if (userRepository.existsByDni(user.getDni())) {
+            throw new IllegalArgumentException("El dni ya existe");
+        }
+
+        // Comprobar si existe telefono
+        if (userRepository.existsByPhone(user.getPhone())) {
+            throw new IllegalArgumentException("El telefono ya existe");
         }
 
         // Valida dni mediante API externa
@@ -90,7 +100,7 @@ public class UserService {
     private void validarDni(String dni){
 
         if(dni==null || dni.isBlank()) {
-            throw new IllegalArgumentException("dni");
+            throw new IllegalArgumentException("error dni");
         }
 
         try{
