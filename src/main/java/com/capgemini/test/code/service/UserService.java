@@ -13,6 +13,8 @@ import com.capgemini.test.code.repository.UserRepository;
 import com.capgemini.test.code.clients.DniClient;
 import com.capgemini.test.code.clients.CheckDniRequest;
 
+import com.capgemini.test.code.dto.UserRequest;
+
 import java.util.Map;
 
 @Service
@@ -94,6 +96,20 @@ public class UserService {
 
         return usuarioGuardado;
 
+    }
+
+
+    public User crearUsuario(UserRequest request) {
+
+        User user = new User();
+
+        user.setName(request.getName());
+        user.setEmail(request.getEmail());
+        user.setPhone(request.getPhone());
+        user.setRole(request.getRol());
+        user.setDni(request.getDni());
+
+        return crearUsuario(user);
     }
 
     // Metodo Validar Dni

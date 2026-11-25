@@ -1,5 +1,6 @@
 package com.capgemini.test.code.controller;
 
+import com.capgemini.test.code.dto.UserRequest;
 import com.capgemini.test.code.entity.User;
 import com.capgemini.test.code.service.UserService;
 
@@ -26,9 +27,9 @@ public class UserController {
     @PostMapping("/{roomId}/users")
     public ResponseEntity<Map<String, Long>> crearUsuario(
             @PathVariable Long roomId,
-            @RequestBody User user) {
+            @RequestBody UserRequest request) {
 
-        User usuarioGuardado = userService.crearUsuario(user);
+        User usuarioGuardado = userService.crearUsuario(request);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
